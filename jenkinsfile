@@ -1,0 +1,29 @@
+pipeline {
+agent {
+node {
+label 'built-in'
+CustomWorkspace '/mnt/jenkins'
+}
+}
+stages {
+stage('install httpd') {
+steps {
+sh 'sudo yum update -y'
+sh 'sudo yum install httpd -y'
+}
+}
+stage('config index.html') {
+steps {
+sh 'cd /mnt/jenkins'
+sh 'echo this is index page of app>index.html'
+}
+}
+stage('paste in html dir') {
+steps {
+sh 'cd /mnt/jenkins'
+sh 'chmod 777 index.html'
+sh 'cp -p index.html /var/www/html'
+}
+}
+}
+}
