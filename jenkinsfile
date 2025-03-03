@@ -15,7 +15,7 @@ sh 'sudo yum install httpd -y'
 stage('config index.html') {
 steps {
 sh 'cd /mnt/jenkins'
-sh 'echo this is index page of app>index.html'
+sh 'echo this is index page of final app>index.html'
 }
 }
 stage('paste in html dir') {
