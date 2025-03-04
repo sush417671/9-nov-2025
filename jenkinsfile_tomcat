@@ -1,0 +1,30 @@
+pipeline {
+agent {
+node {
+label 'built-in'
+customWorkspace '/mnt/git'
+}
+}
+stages {
+stage('gitclone') {
+steps {
+sh 'rm -rf /mnt/Train-Ticket-Reservation-System.github.io'
+sh 'git clone https://github.com/sush417671/Train-Ticket-Reservation-System.github.io.git
+}
+}
+stage('maven') {
+steps {
+dir('/mnt/git/Train-Ticket-Reservation-System.github.io') {
+sh 'mvn clean install'
+}
+}
+}
+stage('put tomcat in webapps') {
+steps {
+dir('/mnt/git/Train-Ticket-Reservation-System.github.io/target') {
+sh 'cp TrainBook-1.0.0-SNAPSHOT.war/ apache-tomcat-9.0.83/webapps/'
+}
+}
+}
+}
+}
