@@ -15,6 +15,7 @@ sh 'git clone https://github.com/sush417671/Train-Ticket-Reservation-System.git'
 stage('maven') {
 steps {
 dir('/mnt/git/Train-Ticket-Reservation-System') {
+sh 'rm -rf Train-Ticket-Reservation-System@tmp'
 sh 'mvn clean install'
 }
 }
