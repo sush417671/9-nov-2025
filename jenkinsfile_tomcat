@@ -22,7 +22,7 @@ sh 'mvn clean install'
 stage('put tomcat in webapps') {
 steps {
 dir('/mnt/git/Train-Ticket-Reservation-System.github.io/target') {
-sh 'cp TrainBook-1.0.0-SNAPSHOT.war/ apache-tomcat-9.0.83/webapps/'
+sh 'cp TrainBook-1.0.0-SNAPSHOT.war/ /mnt/apache-tomcat-9.0.83/webapps'
 }
 }
 }
